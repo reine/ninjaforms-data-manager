@@ -18,14 +18,10 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: class-ninjaforms-data-manager-admin.php:170
-msgid "Page Title"
+#: class-ninjaforms-data-manager-admin.php:166
+msgid "Data Manager"
 msgstr ""
 
-#: class-ninjaforms-data-manager-admin.php:171
-msgid "Menu Text"
-msgstr ""
-
-#: class-ninjaforms-data-manager-admin.php:197
-msgid "Settings"
+#: class-ninjaforms-data-manager-admin.php:167
+msgid "Data Manager"
 msgstr ""

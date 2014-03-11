@@ -10,11 +10,8 @@
  */
 
 /**
- * Ninja_Forms_Data_Manager_Admin class. This class should ideally be used to work with the
- * administrative side of the WordPress site.
- *
- * If you're interested in introducing public-facing
- * functionality, then refer to `class-plugin-name.php`
+ * Ninja_Forms_Data_Manager_Admin class.
+ * The class to manage the administrative side of the WordPress site.
  *
  * @package Ninja_Forms_Data_Manager_Admin
  * @author  Reine Sison <reine@mydevstudio.com>
@@ -69,10 +66,6 @@ class Ninja_Forms_Data_Manager_Admin {
 		// Add the options page and menu item.
 		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
 
-		// Add an action link pointing to the options page.
-		$plugin_basename = plugin_basename( plugin_dir_path( __DIR__ ) . $this->plugin_slug . '.php' );
-		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
-
 		/*
 		 * Define custom functionality.
 		 *
@@ -123,10 +116,7 @@ class Ninja_Forms_Data_Manager_Admin {
 			return;
 		}
 
-		$screen = get_current_screen();
-		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array(), Ninja_Forms_Data_Manager::VERSION );
-		}
+		wp_enqueue_style( $this->plugin_slug .'-admin-styles', plugins_url( 'assets/css/admin.css', __FILE__ ), array(), Ninja_Forms_Data_Manager::VERSION );
 
 	}
 
@@ -157,24 +147,23 @@ class Ninja_Forms_Data_Manager_Admin {
 	 */
 	public function add_plugin_admin_menu() {
 
-		/*
-		 * Add a settings page for this plugin to the Settings menu.
-		 *
-		 * NOTE:  Alternative menu locations are available via WordPress administration menu functions.
-		 *
-		 *        Administration Menus: http://codex.wordpress.org/Administration_Menus
-		 *
-		 * @TODO:
-		 *
-		 * - Change 'manage_options' to the capability you see fit
-		 *   For reference: http://codex.wordpress.org/Roles_and_Capabilities
-		 */
-		$this->plugin_screen_hook_suffix = add_options_page(
-			__( 'Ninja Forms Data Manager Settings', $this->plugin_slug ),
-			__( 'Ninja Forms Data Manager', $this->plugin_slug ),
+		$this->plugin_screen_hook_suffix = add_menu_page(
+			__( 'Data Manager', $this->plugin_slug ),
+			__( 'Data Manager', $this->plugin_slug ),
 			'manage_options',
 			$this->plugin_slug,
-			array( $this, 'display_plugin_admin_page' )
+			array( $this, 'display_plugin_admin_page' ),
+			NINJAFORMS_DATAMANAGER_URL.'/admin/assets/img/icon-database.png',
+			'45.1337'
+		);
+
+		$this->plugin_screen_hook_suffix = add_submenu_page(
+			$this->plugin_slug,
+			'Page title',
+			'Add New',
+			'manage_options',
+			$this->plugin_slug.'-new',
+			'my_magic_function'
 		);
 
 	}
@@ -186,22 +175,6 @@ class Ninja_Forms_Data_Manager_Admin {
 	 */
 	public function display_plugin_admin_page() {
 		include_once( 'views/admin.php' );
-	}
-
-	/**
-	 * Add settings action link to the plugins page.
-	 *
-	 * @since    1.0.0
-	 */
-	public function add_action_links( $links ) {
-
-		return array_merge(
-			array(
-				'settings' => '<a href="' . admin_url( 'options-general.php?page=' . $this->plugin_slug ) . '">' . __( 'Settings', $this->plugin_slug ) . '</a>'
-			),
-			$links
-		);
-
 	}
 
 	/**

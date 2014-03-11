@@ -13,7 +13,7 @@
  * @wordpress-plugin
  * Plugin Name:       Ninja Forms Data Manager
  * Plugin URI:        http://wordpress.org/plugins
- * Description:       A plugin extension for Ninja Forms to allow custom management of submitted data.
+ * Description:       A plugin extension for Ninja Forms to allow custom management of submitted data. Requires <a href="http://ninjaforms.com">Ninja Forms</a> (current version tested on 2.5.1).
  * Version:           1.0.0
  * Author:            Reine Sison
  * Author URI:        http://mydevstudioapps.com
@@ -28,6 +28,16 @@
 if ( ! defined( 'WPINC' ) ) {
 	die;
 }
+
+global $wpdb;
+
+define("NINJAFORMS_DATAMANAGER_DIR", WP_PLUGIN_DIR."/".basename( dirname( __FILE__ ) ) );
+define("NINJAFORMS_DATAMANAGER_URL", plugins_url()."/".basename( dirname( __FILE__ ) ) );
+
+define("NINJA_FORMS_TABLE_NAME", $wpdb->prefix . "ninja_forms");
+define("NINJA_FORMS_FIELDS_TABLE_NAME", $wpdb->prefix . "ninja_forms_fields");
+define("NINJA_FORMS_FAV_FIELDS_TABLE_NAME", $wpdb->prefix . "ninja_forms_fav_fields");
+define("NINJA_FORMS_SUBS_TABLE_NAME", $wpdb->prefix . "ninja_forms_subs");
 
 /*----------------------------------------------------------------------------*
  * Public-Facing Functionality

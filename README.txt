@@ -1,14 +1,14 @@
 === @TODO: Ninja Forms Data Manager ===
-Contributors: (this should be a list of wordpress.org userids)
+Contributors: sreine
 Donate link: http://example.com/
-Tags: ninja forms, data
+Tags: ninja forms, data manager, form, data, database
 Requires at least: 3.8.1
 Tested up to: 3.8.1
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-A plugin extension for Ninja Forms to allow custom management of submitted data.
+A plugin extension for Ninja Forms to allow custom management of submitted data. Requires [Ninja Forms](http://ninjaforms.com) - current version tested on 2.5.1.
 
 == Description ==
 
