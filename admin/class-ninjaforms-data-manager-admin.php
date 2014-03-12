@@ -159,22 +159,31 @@ class Ninja_Forms_Data_Manager_Admin {
 
 		$this->plugin_screen_hook_suffix = add_submenu_page(
 			$this->plugin_slug,
-			'Page title',
+			'Add New Data Container',
 			'Add New',
 			'manage_options',
 			$this->plugin_slug.'-new',
-			'my_magic_function'
+			array( $this, 'display_plugin_admin_new_data_container_page' )
 		);
 
 	}
 
 	/**
-	 * Render the settings page for this plugin.
+	 * Render the main page for this plugin.
 	 *
 	 * @since    1.0.0
 	 */
 	public function display_plugin_admin_page() {
 		include_once( 'views/admin.php' );
+	}
+
+	/**
+	 * Render the 'add new data container' page for this plugin.
+	 *
+	 * @since    1.0.0
+	 */
+	public function display_plugin_admin_new_data_container_page() {
+		include_once( 'views/admin-new-data-container.php' );
 	}
 
 	/**

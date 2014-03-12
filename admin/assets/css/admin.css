@@ -4,3 +4,11 @@
 	padding: 5px 0 0;
 	width: 22px;
 }
+
+#toplevel_page_ninjaforms-data-manager .wp-submenu a.wp-first-item {
+	display: none;
+}
+
+#misc-publishing-actions .dashicons {
+	color: #888;
+}

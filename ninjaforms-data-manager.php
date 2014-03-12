@@ -21,7 +21,7 @@
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Domain Path:       /languages
- * GitHub Plugin URI: https://github.com/reine
+ * GitHub Plugin URI: https://github.com/reine/ninjaforms-data-manager
  */
 
 // If this file is called directly, abort.
@@ -33,6 +33,7 @@ global $wpdb;
 
 define("NINJAFORMS_DATAMANAGER_DIR", WP_PLUGIN_DIR."/".basename( dirname( __FILE__ ) ) );
 define("NINJAFORMS_DATAMANAGER_URL", plugins_url()."/".basename( dirname( __FILE__ ) ) );
+define("NINJAFORMS_DATAMANAGER_SLUG", 'ninjaforms-data-manager');
 
 define("NINJA_FORMS_TABLE_NAME", $wpdb->prefix . "ninja_forms");
 define("NINJA_FORMS_FIELDS_TABLE_NAME", $wpdb->prefix . "ninja_forms_fields");
